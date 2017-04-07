@@ -8,14 +8,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zxmantou.github.io">
-  <title>Tag: shiro | zxmantou&#39;s blog</title>
+  <title>MongoDB安装与启动 | zxmantou&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zxmantou's blog">
-<meta property="og:url" content="https://zxmantou.github.io/tags/shiro/index.html">
+  <meta name="description" content="MongoDB安装与启动1. 安装1.1 windows版
+ 点击https://www.mongodb.com/download-center?jmp=nav#community到mongodb官网上下载msi文件. 双击运行即可, 没有什么需要交代的.
+1.2 Linux版
+123curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB安装与启动">
+<meta property="og:url" content="https://zxmantou.github.io/2017/04/07/MongoDB1/index.html">
 <meta property="og:site_name" content="zxmantou's blog">
+<meta property="og:description" content="MongoDB安装与启动1. 安装1.1 windows版
+ 点击https://www.mongodb.com/download-center?jmp=nav#community到mongodb官网上下载msi文件. 双击运行即可, 没有什么需要交代的.
+1.2 Linux版
+123curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x8">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/3cb6886513862f40fa96dcce8ce5700f/xmlnote/030D1C6238374A368C78CB670968F5CA/276">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/3cb6886513862f40fa96dcce8ce5700f/xmlnote/4D95738B04E54FB8B646D134943FA694/328">
+<meta property="og:updated_time" content="2017-04-07T00:43:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zxmantou's blog">
+<meta name="twitter:title" content="MongoDB安装与启动">
+<meta name="twitter:description" content="MongoDB安装与启动1. 安装1.1 windows版
+ 点击https://www.mongodb.com/download-center?jmp=nav#community到mongodb官网上下载msi文件. 双击运行即可, 没有什么需要交代的.
+1.2 Linux版
+123curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x8">
+<meta name="twitter:image" content="http://note.youdao.com/yws/public/resource/3cb6886513862f40fa96dcce8ce5700f/xmlnote/030D1C6238374A368C78CB670968F5CA/276">
   
     <link rel="alternative" href="/atom.xml" title="zxmantou&#39;s blog" type="application/atom+xml">
   
@@ -155,63 +171,222 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MongoDB1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/08/SpringMVC-Shiro-UnauthorizedException/" class="archive-article-date">
-  	<time datetime="2016-06-08T02:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/08/SpringMVC-Shiro-UnauthorizedException/">SpringMVC + Shiro 访问未授权页面时不跳转，页面打印抛异常</a>
+    <h1 class="article-title" itemprop="name">
+      MongoDB安装与启动
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/04/07/MongoDB1/" class="archive-article-date">
+  	<time datetime="2017-04-07T00:41:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MongoDB安装与启动"><a href="#MongoDB安装与启动" class="headerlink" title="MongoDB安装与启动"></a>MongoDB安装与启动</h1><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><p>1.1 windows版</p>
+<p> 点击<a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="external">https://www.mongodb.com/download-center?jmp=nav#community</a><br>到mongodb官网上下载msi文件. 双击运行即可, 没有什么需要交代的.</p>
+<p>1.2 Linux版</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.3.tgz    # 下载</div><div class="line">tar -zxvf mongodb-linux-x86_64-3.4.3.tgz                                   # 解压</div><div class="line">mv  mongodb-linux-x86_64-3.4.3/ /usr/local/mongodb</div></pre></td></tr></table></figure>
+<p>MongoDB 的可执行文件位于 bin 目录下，所以可以将其添加到 PATH 路径中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=/usr/local/mongodb/bin:$PATH</div></pre></td></tr></table></figure>
+<p>1.3 Mac版<br>mac版有两种方式, 一种是跟linux一样, 下载地址<a href="https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-3.4.3.tgz" target="_blank" rel="external">在此</a>.<br>另一种是通过brew安装:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo brew install mongodb</div></pre></td></tr></table></figure>
+<p>如果要安装支持 TLS/SSL 命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo brew install mongodb --with-openssl</div></pre></td></tr></table></figure>
+<p>安装最新开发版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo brew install mongodb --devel</div></pre></td></tr></table></figure>
+<h3 id="2-启动MongoDB服务-以windows为例"><a href="#2-启动MongoDB服务-以windows为例" class="headerlink" title="2. 启动MongoDB服务(以windows为例)"></a>2. 启动MongoDB服务(以windows为例)</h3><p>安装完后文件目录如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">D:\Program Files\MongoDB\Server&gt;tree /a /f</div><div class="line">文件夹 PATH 列表</div><div class="line">卷序列号为 000D-76A0</div><div class="line">D:.</div><div class="line">\---3.4</div><div class="line">    |   GNU-AGPL-3.0</div><div class="line">    |   MPL-2</div><div class="line">    |   README</div><div class="line">    |   THIRD-PARTY-NOTICES</div><div class="line">    |</div><div class="line">    \---bin</div><div class="line">            bsondump.exe</div><div class="line">            libeay32.dll</div><div class="line">            mongo.exe</div><div class="line">            mongod.exe</div><div class="line">            mongod.pdb</div><div class="line">            mongodump.exe</div><div class="line">            mongoexport.exe</div><div class="line">            mongofiles.exe</div><div class="line">            mongoimport.exe</div><div class="line">            mongooplog.exe</div><div class="line">            mongoperf.exe</div><div class="line">            mongorestore.exe</div><div class="line">            mongos.exe</div><div class="line">            mongos.pdb</div><div class="line">            mongostat.exe</div><div class="line">            mongotop.exe</div><div class="line">            ssleay32.dll</div></pre></td></tr></table></figure>
+<p>首先创建一个用于存放MongoDB数据的文件夹, 我创建了一个文件夹 F:\mongodb, 然后定位到mongodb的bin文件夹, 执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath=f:\mongodb</div></pre></td></tr></table></figure>
+<p>其中dbpath则是用于指定存放数据的路径, 这样mongodb服务便启动了.<br><img src="http://note.youdao.com/yws/public/resource/3cb6886513862f40fa96dcce8ce5700f/xmlnote/030D1C6238374A368C78CB670968F5CA/276" alt="image"></p>
+<p>此时新开一个cmd, 输入mongo打开shell, 其实这个shell就是mongodb的客户端，同时也是一个js的编译器，默认连接的是“test”数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">D:\Program Files\MongoDB\Server\3.4\bin&gt;mongo</div><div class="line">MongoDB shell version v3.4.3</div><div class="line">connecting to: mongodb://127.0.0.1:27017</div><div class="line">MongoDB server version: 3.4.3</div><div class="line">&gt; db</div><div class="line">test</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<h3 id="3-访问控制"><a href="#3-访问控制" class="headerlink" title="3. 访问控制"></a>3. 访问控制</h3><p>注意开启MongoDB服务时有一个waring:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2017-04-05T18:45:08.793+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.</div><div class="line">2017-04-05T18:45:08.793+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.</div></pre></td></tr></table></figure>
+<p>这是由于服务启动的时候没有开启访问控制(认证、授权)，如果是在学习阶段可以忽略这个警告，生产环境则需要开启访问控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --auth --dbpath=f:\mongodb</div></pre></td></tr></table></figure></p>
+<p>添加用户(需要在没开启访问控制的时候操作):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">use admin</div><div class="line">db.createUser(</div><div class="line">...   &#123;</div><div class="line">...     user: &quot;test&quot;,</div><div class="line">...     pwd: &quot;test&quot;,</div><div class="line">...     roles: [ &#123; role: &quot;__system&quot;, db: &quot;admin&quot; &#125; ]</div><div class="line">...   &#125;</div><div class="line">... )</div></pre></td></tr></table></figure>
+<p>这时使用–auth开启服务, 执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.auth(&quot;test&quot;,&quot;test&quot;)</div></pre></td></tr></table></figure>
+<p>即可继续操作数据库了</p>
+<h3 id="4-MongoDb-web-用户界面"><a href="#4-MongoDb-web-用户界面" class="headerlink" title="4. MongoDb web 用户界面"></a>4. MongoDb web 用户界面</h3><p>MongoDB 提供了简单的 HTTP 用户界面。 如果你想启用该功能，需要在启动的时候指定参数 –rest 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath=f:\mongodb --rest</div></pre></td></tr></table></figure></p>
+<p>MongoDB 的 Web 界面访问端口比服务的端口多1000。<br>如果你的MongoDB运行端口使用默认的27017，你可以在端口号为28017访问web用户界面，即地址为：<a href="http://localhost:28017。" target="_blank" rel="external">http://localhost:28017。</a><br><img src="http://note.youdao.com/yws/public/resource/3cb6886513862f40fa96dcce8ce5700f/xmlnote/4D95738B04E54FB8B646D134943FA694/328" alt="image"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shiro</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zxmantou.github.io/2017/04/07/MongoDB1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/07/MongoDB2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MongoDB增删改——我们所熟悉的操作 [MongoDB]
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/06/08/SpringMVC-Shiro-UnauthorizedException/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringMVC + Shiro 访问未授权页面时不跳转，页面打印抛异常</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="MongoDB1" data-title="MongoDB安装与启动" data-url="https://zxmantou.github.io/2017/04/07/MongoDB1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2129683"></script>
+</section>
     
 
 
@@ -235,9 +410,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

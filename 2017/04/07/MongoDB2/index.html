@@ -8,14 +8,48 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zxmantou.github.io">
-  <title>Tag: shiro | zxmantou&#39;s blog</title>
+  <title>MongoDB增删改——我们所熟悉的操作 [MongoDB] | zxmantou&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zxmantou's blog">
-<meta property="og:url" content="https://zxmantou.github.io/tags/shiro/index.html">
+  <meta name="description" content="MongoDB增删改——我们所熟悉的操作前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作
+
+创建数据库
+ MongoDB 创建数据库的语法格式如下：
+ 1use DATABASE_NAME
+
+
+如果数据库不存在，则创建数据库，否则切换到指定数据库。
+演示
+
+12345&amp;gt; use zxmantouswitched to db zxmanto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB增删改——我们所熟悉的操作 [MongoDB]">
+<meta property="og:url" content="https://zxmantou.github.io/2017/04/07/MongoDB2/index.html">
 <meta property="og:site_name" content="zxmantou's blog">
+<meta property="og:description" content="MongoDB增删改——我们所熟悉的操作前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作
+
+创建数据库
+ MongoDB 创建数据库的语法格式如下：
+ 1use DATABASE_NAME
+
+
+如果数据库不存在，则创建数据库，否则切换到指定数据库。
+演示
+
+12345&amp;gt; use zxmantouswitched to db zxmanto">
+<meta property="og:updated_time" content="2017-04-07T00:45:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zxmantou's blog">
+<meta name="twitter:title" content="MongoDB增删改——我们所熟悉的操作 [MongoDB]">
+<meta name="twitter:description" content="MongoDB增删改——我们所熟悉的操作前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作
+
+创建数据库
+ MongoDB 创建数据库的语法格式如下：
+ 1use DATABASE_NAME
+
+
+如果数据库不存在，则创建数据库，否则切换到指定数据库。
+演示
+
+12345&amp;gt; use zxmantouswitched to db zxmanto">
   
     <link rel="alternative" href="/atom.xml" title="zxmantou&#39;s blog" type="application/atom+xml">
   
@@ -155,63 +189,292 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MongoDB2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/08/SpringMVC-Shiro-UnauthorizedException/" class="archive-article-date">
-  	<time datetime="2016-06-08T02:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/08/SpringMVC-Shiro-UnauthorizedException/">SpringMVC + Shiro 访问未授权页面时不跳转，页面打印抛异常</a>
+    <h1 class="article-title" itemprop="name">
+      MongoDB增删改——我们所熟悉的操作 [MongoDB]
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/04/07/MongoDB2/" class="archive-article-date">
+  	<time datetime="2017-04-07T00:43:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MongoDB增删改——我们所熟悉的操作"><a href="#MongoDB增删改——我们所熟悉的操作" class="headerlink" title="MongoDB增删改——我们所熟悉的操作"></a>MongoDB增删改——我们所熟悉的操作</h1><p>前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作</p>
+<ol>
+<li><p>创建数据库</p>
+<p> MongoDB 创建数据库的语法格式如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use DATABASE_NAME</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>如果数据库不存在，则创建数据库，否则切换到指定数据库。
+演示
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; use zxmantou</div><div class="line">switched to db zxmantou</div><div class="line">&gt; db</div><div class="line">zxmantou</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+
+可见我们当前的db已经是zxmantou了, 使用**show dbs**命令查看数据库列表
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">admin  0.000GB</div><div class="line">local  0.000GB</div><div class="line">test   0.000GB</div></pre></td></tr></table></figure>
+
+发现新增的数据库并不在其中. 要显示它，我们需要向 zxmantou 数据库插入一些数据。
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.insert(&#123;name:&quot;zxmantou&quot;&#125;)</div><div class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</div><div class="line">&gt; show dbs</div><div class="line">admin     0.000GB</div><div class="line">local     0.000GB</div><div class="line">test      0.000GB</div><div class="line">zxmantou  0.000GB</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p>删除数据库</p>
+<p> 删除当前数据库，默认为 test, 下面实例中将删除我们新建的zxmantou库:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">admin     0.000GB</div><div class="line">local     0.000GB</div><div class="line">test      0.000GB</div><div class="line">zxmantou  0.000GB</div><div class="line">&gt; db</div><div class="line">zxmantou</div><div class="line">&gt; db.dropDatabase()</div><div class="line">&#123; &quot;dropped&quot; : &quot;zxmantou&quot;, &quot;ok&quot; : 1 &#125;</div><div class="line">&gt; show dbs</div><div class="line">admin  0.000GB</div><div class="line">local  0.000GB</div><div class="line">test   0.000GB</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除集合(删除数据表)<br> 集合删除语法格式如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.drop()</div></pre></td></tr></table></figure>
+<p> 实例:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; use zxmantou</div><div class="line">switched to db zxmantou</div><div class="line">&gt; show tables</div><div class="line">user</div><div class="line">&gt; db.user.drop()</div><div class="line">true</div><div class="line">&gt; show tables</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>插入文档(新增记录)<br> MongoDB 使用 insert() 或 save() 方法向集合中插入文档，语法如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.insert(document)</div></pre></td></tr></table></figure>
+<p> 实例:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; use zxmantou</div><div class="line">switched to db zxmantou</div><div class="line">&gt; db.user.insert(&#123;</div><div class="line">... name:&quot;zxmantou&quot;,</div><div class="line">... age:&quot;27&quot;,</div><div class="line">... gender: &quot;male&quot;,</div><div class="line">... site: &quot;www.zhangyuxiaojiao.com&quot;</div><div class="line">... &#125;)</div><div class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</div><div class="line">&gt; db.user.find()</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;), &quot;name&quot; : &quot;zxmantou&quot;, &quot;age&quot; : &quot;27&quot;, &quot;gender&quot; : &quot;male&quot;, &quot;site&quot; : &quot;www.zhan</div><div class="line">gyuxiaojiao.com&quot; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p> 以上实例中 user 是我们的集合名(数据表名)，如果该集合不在该数据库中， MongoDB 会自动创建该集合并插入文档(一行记录)。</p>
+</li>
+<li><p>更新文档(更新记录)<br> MongoDB 使用 update() 和 save() 方法来更新集合中的文档。接下来让我们详细来看下两个函数的应用及其区别。</p>
+<p> 5.1 Update()方法:</p>
+<pre><code>update() 方法用于更新已存在的文档。语法格式如下：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.update(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &lt;update&gt;,</div><div class="line">   &#123;</div><div class="line">     upsert: &lt;boolean&gt;,</div><div class="line">     multi: &lt;boolean&gt;,</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<pre><code>  参数说明：
+query : update的查询条件，类似sql update查询内where后面的。
+update : update的对象和一些更新的操作符（如$,$inc...）等，也可以理解为sql update查询内set后面的
+upsert : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。
+multi : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。
+writeConcern :可选，抛出异常的级别。
+</code></pre></blockquote>
+<p> 我们刚才已经插入了一条记录, 现在对其进行修改:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.find()</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;), &quot;name&quot; : &quot;zxmantou&quot;, &quot;age&quot; : &quot;27&quot;, &quot;gender&quot; : &quot;male&quot;, &quot;site&quot; : &quot;www.zhan</div><div class="line">gyuxiaojiao.com&quot; &#125;</div><div class="line">&gt; db.user.update(&#123;&apos;name&apos;:&apos;zxmantou&apos;&#125;,&#123;$set:&#123;&apos;age&apos;:18&#125;&#125;)</div><div class="line">WriteResult(&#123; &quot;nMatched&quot; : 1, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 1 &#125;)</div><div class="line">&gt; db.user.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;),</div><div class="line">        &quot;name&quot; : &quot;zxmantou&quot;,</div><div class="line">        &quot;age&quot; : 18,</div><div class="line">        &quot;gender&quot; : &quot;male&quot;,</div><div class="line">        &quot;site&quot; : &quot;www.zhangyuxiaojiao.com&quot;</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p> 可见年龄已经年轻到18岁啦~</p>
+<p> 5.2 save() 方法<br> save() 方法通过传入的文档来替换已有文档。语法格式如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.collection.save(</div><div class="line">       &lt;document&gt;,</div><div class="line">       &#123;</div><div class="line">         writeConcern: &lt;document&gt;</div><div class="line">       &#125;</div><div class="line">    )</div></pre></td></tr></table></figure>
+<blockquote>
+<pre><code>参数说明：
+    document : 文档数据。
+    writeConcern :可选，抛出异常的级别。    
+</code></pre></blockquote>
+<p> 实例</p>
+<p> 以下实例中我们替换了 _id 为 58e4d75bbe3140034aeb2ba1 的文档数据：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.save(&#123;</div><div class="line">... &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;),</div><div class="line">...     &quot;name&quot; : &quot;zhangyuxiaojiao&quot;,</div><div class="line">...     &quot;gender&quot; : &quot;male&quot;,</div><div class="line">...     &quot;age&quot; : &quot;27&quot;,</div><div class="line">...     &quot;site&quot; : &quot;zxmantou.github.io&quot;</div><div class="line">... &#125;)</div><div class="line">WriteResult(&#123; &quot;nMatched&quot; : 1, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 1 &#125;)</div><div class="line">&gt; db.user.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;),</div><div class="line">        &quot;name&quot; : &quot;zhangyuxiaojiao&quot;,</div><div class="line">        &quot;gender&quot; : &quot;male&quot;,</div><div class="line">        &quot;age&quot; : &quot;27&quot;,</div><div class="line">        &quot;site&quot; : &quot;zxmantou.github.io&quot;</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<h5 id="更多实例"><a href="#更多实例" class="headerlink" title="更多实例"></a>更多实例</h5><ul>
+<li><p>只更新第一条记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 1 &#125; &#125; , &#123; $set : &#123; &quot;test2&quot; : &quot;OK&quot;&#125; &#125; );</div></pre></td></tr></table></figure>
+</li>
+<li><p>全部更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 3 &#125; &#125; , &#123; $set : &#123; &quot;test2&quot; : &quot;OK&quot;&#125; &#125;,false,true );</div></pre></td></tr></table></figure>
+</li>
+<li><p>只添加第一条：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 4 &#125; &#125; , &#123; $set : &#123; &quot;test5&quot; : &quot;OK&quot;&#125; &#125;,true,false );</div></pre></td></tr></table></figure>
+</li>
+<li><p>全部添加加进去:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 5 &#125; &#125; , &#123; $set : &#123; &quot;test5&quot; : &quot;OK&quot;&#125; &#125;,true,true );</div></pre></td></tr></table></figure>
+</li>
+<li><p>全部更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 15 &#125; &#125; , &#123; $inc : &#123; &quot;count&quot; : 1&#125; &#125;,false,true );</div></pre></td></tr></table></figure>
+</li>
+<li><p>只更新第一条记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 10 &#125; &#125; , &#123; $inc : &#123; &quot;count&quot; : 1&#125; &#125;,false,false );</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>删除文档(删除记录)<br> remove() 方法的基本语法格式如下所示：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.collection.remove(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &#123;</div><div class="line">     justOne: &lt;boolean&gt;,</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<pre><code>    参数说明：
+query :（可选）删除的文档的条件。
+justOne : （可选）如果设为 true 或 1，则只删除一个文档。
+writeConcern :（可选）抛出异常的级别。
+</code></pre></blockquote>
+<pre><code>实例:
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;),</div><div class="line">        &quot;name&quot; : &quot;zhangyuxiaojiao&quot;,</div><div class="line">        &quot;gender&quot; : &quot;male&quot;,</div><div class="line">        &quot;age&quot; : &quot;27&quot;,</div><div class="line">        &quot;site&quot; : &quot;zxmantou.github.io&quot;</div><div class="line">&#125;</div><div class="line">&gt; db.user.remove(&#123;&apos;name&apos;:&apos;zhangyuxiaojiao&apos;&#125;)</div><div class="line">WriteResult(&#123; &quot;nRemoved&quot; : 1 &#125;)</div><div class="line">&gt; db.user.find().pretty()</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>如果你想删除所有数据，可以使用以下方式（类似常规 SQL 的 truncate 命令）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.remove(&#123;&#125;)</div></pre></td></tr></table></figure>
+<ol>
+<li>查询文档(查询记录)<br> 之前实例已经演示了通过find()方法来查询所有记录的方法, 下一篇内容中将详细介绍复杂的查询方法</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shiro</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zxmantou.github.io/2017/04/07/MongoDB2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/07/MongoDB3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MongoDB3
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/04/07/MongoDB1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB安装与启动</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="MongoDB2" data-title="MongoDB增删改——我们所熟悉的操作 [MongoDB]" data-url="https://zxmantou.github.io/2017/04/07/MongoDB2/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2129683"></script>
+</section>
     
 
 
@@ -235,9 +498,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

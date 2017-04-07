@@ -8,14 +8,93 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zxmantou.github.io">
-  <title>Tag: shiro | zxmantou&#39;s blog</title>
+  <title>MongoDB3 | zxmantou&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zxmantou's blog">
-<meta property="og:url" content="https://zxmantou.github.io/tags/shiro/index.html">
+  <meta name="description" content="MongoDB备份与恢复1. 备份 mongodump用法: mongodump 
+将mongodb里的数据导出为.bson文件
+常用配置:
+
+
+
+参数
+用法
+
+
+
+
+/help
+打印帮助
+
+
+/version
+打印工具版本
+
+
+/v, /verbose:
+指定日志(v的数量代表了日志级别, 如:-vvvv, 也可以指定数字, 如:–verbose=N)
+
+
+/quiet
+静默执行, 不打印任何日">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB3">
+<meta property="og:url" content="https://zxmantou.github.io/2017/04/07/MongoDB3/index.html">
 <meta property="og:site_name" content="zxmantou's blog">
+<meta property="og:description" content="MongoDB备份与恢复1. 备份 mongodump用法: mongodump 
+将mongodb里的数据导出为.bson文件
+常用配置:
+
+
+
+参数
+用法
+
+
+
+
+/help
+打印帮助
+
+
+/version
+打印工具版本
+
+
+/v, /verbose:
+指定日志(v的数量代表了日志级别, 如:-vvvv, 也可以指定数字, 如:–verbose=N)
+
+
+/quiet
+静默执行, 不打印任何日">
+<meta property="og:updated_time" content="2017-04-07T00:46:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zxmantou's blog">
+<meta name="twitter:title" content="MongoDB3">
+<meta name="twitter:description" content="MongoDB备份与恢复1. 备份 mongodump用法: mongodump 
+将mongodb里的数据导出为.bson文件
+常用配置:
+
+
+
+参数
+用法
+
+
+
+
+/help
+打印帮助
+
+
+/version
+打印工具版本
+
+
+/v, /verbose:
+指定日志(v的数量代表了日志级别, 如:-vvvv, 也可以指定数字, 如:–verbose=N)
+
+
+/quiet
+静默执行, 不打印任何日">
   
     <link rel="alternative" href="/atom.xml" title="zxmantou&#39;s blog" type="application/atom+xml">
   
@@ -155,63 +234,259 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MongoDB3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/08/SpringMVC-Shiro-UnauthorizedException/" class="archive-article-date">
-  	<time datetime="2016-06-08T02:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/08/SpringMVC-Shiro-UnauthorizedException/">SpringMVC + Shiro 访问未授权页面时不跳转，页面打印抛异常</a>
+    <h1 class="article-title" itemprop="name">
+      MongoDB3
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/04/07/MongoDB3/" class="archive-article-date">
+  	<time datetime="2017-04-07T00:45:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MongoDB备份与恢复"><a href="#MongoDB备份与恢复" class="headerlink" title="MongoDB备份与恢复"></a>MongoDB备份与恢复</h1><h3 id="1-备份-mongodump"><a href="#1-备份-mongodump" class="headerlink" title="1. 备份 mongodump"></a>1. 备份 mongodump</h3><p>用法: mongodump <options></options></p>
+<p>将mongodb里的数据导出为.bson文件</p>
+<p>常用配置:</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/help</td>
+<td>打印帮助</td>
+</tr>
+<tr>
+<td>/version</td>
+<td>打印工具版本</td>
+</tr>
+<tr>
+<td>/v, /verbose:<level></level></td>
+<td>指定日志(v的数量代表了日志级别, 如:-vvvv, 也可以指定数字, 如:–verbose=N)</td>
+</tr>
+<tr>
+<td>/quiet</td>
+<td>静默执行, 不打印任何日志输出</td>
+</tr>
+<tr>
+<td>/h, /host:<hostname></hostname></td>
+<td>指明数据库服务器的IP</td>
+</tr>
+<tr>
+<td>/port:<port></port></td>
+<td>服务端口 (也可以这么用 –host hostname:port)</td>
+</tr>
+<tr>
+<td>/u, /username:<username></username></td>
+<td>连接服务器的用户名</td>
+</tr>
+<tr>
+<td>/p, /password:<password></password></td>
+<td>连接数据库的密码</td>
+</tr>
+<tr>
+<td>/authenticationDatabase:<database-name></database-name></td>
+<td>存储用户凭据的数据库</td>
+</tr>
+<tr>
+<td>/authenticationMechanism:<mechanism></mechanism></td>
+<td>认证机制</td>
+</tr>
+<tr>
+<td>/d, /db:<database-name></database-name></td>
+<td>将要备份的数据库</td>
+</tr>
+<tr>
+<td>/c, /collection:<collection-name></collection-name></td>
+<td>将要备份的集合(数据表)</td>
+</tr>
+<tr>
+<td>/o, /out:<directory-path></directory-path></td>
+<td>备份文件输出路径, 默认路径是bin下的dump 或者指定为’-‘ 表示输出到控制台(例: -o -)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-恢复-mongorestore"><a href="#2-恢复-mongorestore" class="headerlink" title="2. 恢复 mongorestore"></a>2. 恢复 mongorestore</h3><p>用法: mongorestore <options> <directory or="" file="" to="" restore=""></directory></options></p>
+<p>常用配置:</p>
+<p>同上</p>
+<h3 id="3-其他方法"><a href="#3-其他方法" class="headerlink" title="3. 其他方法"></a>3. 其他方法</h3><p>有时别人会把整个MongoDB的数据文件发给你, 这种”备份”方式很不推荐, 因为这样很有可能在复制文件的时候有更新操作, 导致拿到的文件时不完整的, 从而无法恢复. 使用上述备份与恢复方法可以避免这个问题.</p>
+<p>如果拿到的是数据文件:</p>
+<ul>
+<li>首先看是否有.wt文件, 如果有, 则说明原始库用的是WiredTiger引擎, 如果你的MongoDB是3.2以上版本, 则默认就是WiredTiger引擎, 无需额外加参数. 如果没有.wt文件, 而是有xxx.ns和xxx.0  xxx.1等文件, 则说明用的是mmap引擎, 3.2一下版本默认就是这个引擎, 而3.2以上版本需要指定参数:–storageEngine=mmapv1</li>
+<li>然后看文件夹中是不是每个数据库都有自己的子文件夹, 这将决定启动mongod的时候是否需要加参数–directoryperdb, 有子文件夹则需要加这个参数, MongoDB将会去相应的子文件夹中读取数据文件</li>
+<li>最后别忘了加参数–dbpath用于指定你所拿到备库文件夹的路径</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shiro</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zxmantou.github.io/2017/04/07/MongoDB3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/04/07/MongoDB2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB增删改——我们所熟悉的操作 [MongoDB]</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="MongoDB3" data-title="MongoDB3" data-url="https://zxmantou.github.io/2017/04/07/MongoDB3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2129683"></script>
+</section>
     
 
 
@@ -235,9 +510,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

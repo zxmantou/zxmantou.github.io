@@ -157,6 +157,398 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MongoDB3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/MongoDB3/">MongoDB3</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/MongoDB3/" class="archive-article-date">
+  	<time datetime="2017-04-07T00:45:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MongoDB备份与恢复"><a href="#MongoDB备份与恢复" class="headerlink" title="MongoDB备份与恢复"></a>MongoDB备份与恢复</h1><h3 id="1-备份-mongodump"><a href="#1-备份-mongodump" class="headerlink" title="1. 备份 mongodump"></a>1. 备份 mongodump</h3><p>用法: mongodump <options></options></p>
+<p>将mongodb里的数据导出为.bson文件</p>
+<p>常用配置:</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/help</td>
+<td>打印帮助</td>
+</tr>
+<tr>
+<td>/version</td>
+<td>打印工具版本</td>
+</tr>
+<tr>
+<td>/v, /verbose:<level></level></td>
+<td>指定日志(v的数量代表了日志级别, 如:-vvvv, 也可以指定数字, 如:–verbose=N)</td>
+</tr>
+<tr>
+<td>/quiet</td>
+<td>静默执行, 不打印任何日志输出</td>
+</tr>
+<tr>
+<td>/h, /host:<hostname></hostname></td>
+<td>指明数据库服务器的IP</td>
+</tr>
+<tr>
+<td>/port:<port></port></td>
+<td>服务端口 (也可以这么用 –host hostname:port)</td>
+</tr>
+<tr>
+<td>/u, /username:<username></username></td>
+<td>连接服务器的用户名</td>
+</tr>
+<tr>
+<td>/p, /password:<password></password></td>
+<td>连接数据库的密码</td>
+</tr>
+<tr>
+<td>/authenticationDatabase:<database-name></database-name></td>
+<td>存储用户凭据的数据库</td>
+</tr>
+<tr>
+<td>/authenticationMechanism:<mechanism></mechanism></td>
+<td>认证机制</td>
+</tr>
+<tr>
+<td>/d, /db:<database-name></database-name></td>
+<td>将要备份的数据库</td>
+</tr>
+<tr>
+<td>/c, /collection:<collection-name></collection-name></td>
+<td>将要备份的集合(数据表)</td>
+</tr>
+<tr>
+<td>/o, /out:<directory-path></directory-path></td>
+<td>备份文件输出路径, 默认路径是bin下的dump 或者指定为’-‘ 表示输出到控制台(例: -o -)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-恢复-mongorestore"><a href="#2-恢复-mongorestore" class="headerlink" title="2. 恢复 mongorestore"></a>2. 恢复 mongorestore</h3><p>用法: mongorestore <options> <directory or="" file="" to="" restore=""></directory></options></p>
+<p>常用配置:</p>
+<p>同上</p>
+<h3 id="3-其他方法"><a href="#3-其他方法" class="headerlink" title="3. 其他方法"></a>3. 其他方法</h3><p>有时别人会把整个MongoDB的数据文件发给你, 这种”备份”方式很不推荐, 因为这样很有可能在复制文件的时候有更新操作, 导致拿到的文件时不完整的, 从而无法恢复. 使用上述备份与恢复方法可以避免这个问题.</p>
+<p>如果拿到的是数据文件:</p>
+<ul>
+<li>首先看是否有.wt文件, 如果有, 则说明原始库用的是WiredTiger引擎, 如果你的MongoDB是3.2以上版本, 则默认就是WiredTiger引擎, 无需额外加参数. 如果没有.wt文件, 而是有xxx.ns和xxx.0  xxx.1等文件, 则说明用的是mmap引擎, 3.2一下版本默认就是这个引擎, 而3.2以上版本需要指定参数:–storageEngine=mmapv1</li>
+<li>然后看文件夹中是不是每个数据库都有自己的子文件夹, 这将决定启动mongod的时候是否需要加参数–directoryperdb, 有子文件夹则需要加这个参数, MongoDB将会去相应的子文件夹中读取数据文件</li>
+<li>最后别忘了加参数–dbpath用于指定你所拿到备库文件夹的路径</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/07/MongoDB3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-MongoDB2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/MongoDB2/">MongoDB增删改——我们所熟悉的操作 [MongoDB]</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/MongoDB2/" class="archive-article-date">
+  	<time datetime="2017-04-07T00:43:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MongoDB增删改——我们所熟悉的操作"><a href="#MongoDB增删改——我们所熟悉的操作" class="headerlink" title="MongoDB增删改——我们所熟悉的操作"></a>MongoDB增删改——我们所熟悉的操作</h1><p>前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作</p>
+<ol>
+<li><p>创建数据库</p>
+<p> MongoDB 创建数据库的语法格式如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use DATABASE_NAME</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>如果数据库不存在，则创建数据库，否则切换到指定数据库。
+演示
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; use zxmantou</div><div class="line">switched to db zxmantou</div><div class="line">&gt; db</div><div class="line">zxmantou</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+
+可见我们当前的db已经是zxmantou了, 使用**show dbs**命令查看数据库列表
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">admin  0.000GB</div><div class="line">local  0.000GB</div><div class="line">test   0.000GB</div></pre></td></tr></table></figure>
+
+发现新增的数据库并不在其中. 要显示它，我们需要向 zxmantou 数据库插入一些数据。
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.insert(&#123;name:&quot;zxmantou&quot;&#125;)</div><div class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</div><div class="line">&gt; show dbs</div><div class="line">admin     0.000GB</div><div class="line">local     0.000GB</div><div class="line">test      0.000GB</div><div class="line">zxmantou  0.000GB</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p>删除数据库</p>
+<p> 删除当前数据库，默认为 test, 下面实例中将删除我们新建的zxmantou库:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">admin     0.000GB</div><div class="line">local     0.000GB</div><div class="line">test      0.000GB</div><div class="line">zxmantou  0.000GB</div><div class="line">&gt; db</div><div class="line">zxmantou</div><div class="line">&gt; db.dropDatabase()</div><div class="line">&#123; &quot;dropped&quot; : &quot;zxmantou&quot;, &quot;ok&quot; : 1 &#125;</div><div class="line">&gt; show dbs</div><div class="line">admin  0.000GB</div><div class="line">local  0.000GB</div><div class="line">test   0.000GB</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除集合(删除数据表)<br> 集合删除语法格式如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.drop()</div></pre></td></tr></table></figure>
+<p> 实例:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; use zxmantou</div><div class="line">switched to db zxmantou</div><div class="line">&gt; show tables</div><div class="line">user</div><div class="line">&gt; db.user.drop()</div><div class="line">true</div><div class="line">&gt; show tables</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>插入文档(新增记录)<br> MongoDB 使用 insert() 或 save() 方法向集合中插入文档，语法如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.insert(document)</div></pre></td></tr></table></figure>
+<p> 实例:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; use zxmantou</div><div class="line">switched to db zxmantou</div><div class="line">&gt; db.user.insert(&#123;</div><div class="line">... name:&quot;zxmantou&quot;,</div><div class="line">... age:&quot;27&quot;,</div><div class="line">... gender: &quot;male&quot;,</div><div class="line">... site: &quot;www.zhangyuxiaojiao.com&quot;</div><div class="line">... &#125;)</div><div class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</div><div class="line">&gt; db.user.find()</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;), &quot;name&quot; : &quot;zxmantou&quot;, &quot;age&quot; : &quot;27&quot;, &quot;gender&quot; : &quot;male&quot;, &quot;site&quot; : &quot;www.zhan</div><div class="line">gyuxiaojiao.com&quot; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p> 以上实例中 user 是我们的集合名(数据表名)，如果该集合不在该数据库中， MongoDB 会自动创建该集合并插入文档(一行记录)。</p>
+</li>
+<li><p>更新文档(更新记录)<br> MongoDB 使用 update() 和 save() 方法来更新集合中的文档。接下来让我们详细来看下两个函数的应用及其区别。</p>
+<p> 5.1 Update()方法:</p>
+<pre><code>update() 方法用于更新已存在的文档。语法格式如下：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.update(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &lt;update&gt;,</div><div class="line">   &#123;</div><div class="line">     upsert: &lt;boolean&gt;,</div><div class="line">     multi: &lt;boolean&gt;,</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<pre><code>  参数说明：
+query : update的查询条件，类似sql update查询内where后面的。
+update : update的对象和一些更新的操作符（如$,$inc...）等，也可以理解为sql update查询内set后面的
+upsert : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。
+multi : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。
+writeConcern :可选，抛出异常的级别。
+</code></pre></blockquote>
+<p> 我们刚才已经插入了一条记录, 现在对其进行修改:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.find()</div><div class="line">&#123; &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;), &quot;name&quot; : &quot;zxmantou&quot;, &quot;age&quot; : &quot;27&quot;, &quot;gender&quot; : &quot;male&quot;, &quot;site&quot; : &quot;www.zhan</div><div class="line">gyuxiaojiao.com&quot; &#125;</div><div class="line">&gt; db.user.update(&#123;&apos;name&apos;:&apos;zxmantou&apos;&#125;,&#123;$set:&#123;&apos;age&apos;:18&#125;&#125;)</div><div class="line">WriteResult(&#123; &quot;nMatched&quot; : 1, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 1 &#125;)</div><div class="line">&gt; db.user.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;),</div><div class="line">        &quot;name&quot; : &quot;zxmantou&quot;,</div><div class="line">        &quot;age&quot; : 18,</div><div class="line">        &quot;gender&quot; : &quot;male&quot;,</div><div class="line">        &quot;site&quot; : &quot;www.zhangyuxiaojiao.com&quot;</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p> 可见年龄已经年轻到18岁啦~</p>
+<p> 5.2 save() 方法<br> save() 方法通过传入的文档来替换已有文档。语法格式如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.collection.save(</div><div class="line">       &lt;document&gt;,</div><div class="line">       &#123;</div><div class="line">         writeConcern: &lt;document&gt;</div><div class="line">       &#125;</div><div class="line">    )</div></pre></td></tr></table></figure>
+<blockquote>
+<pre><code>参数说明：
+    document : 文档数据。
+    writeConcern :可选，抛出异常的级别。    
+</code></pre></blockquote>
+<p> 实例</p>
+<p> 以下实例中我们替换了 _id 为 58e4d75bbe3140034aeb2ba1 的文档数据：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.save(&#123;</div><div class="line">... &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;),</div><div class="line">...     &quot;name&quot; : &quot;zhangyuxiaojiao&quot;,</div><div class="line">...     &quot;gender&quot; : &quot;male&quot;,</div><div class="line">...     &quot;age&quot; : &quot;27&quot;,</div><div class="line">...     &quot;site&quot; : &quot;zxmantou.github.io&quot;</div><div class="line">... &#125;)</div><div class="line">WriteResult(&#123; &quot;nMatched&quot; : 1, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 1 &#125;)</div><div class="line">&gt; db.user.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;),</div><div class="line">        &quot;name&quot; : &quot;zhangyuxiaojiao&quot;,</div><div class="line">        &quot;gender&quot; : &quot;male&quot;,</div><div class="line">        &quot;age&quot; : &quot;27&quot;,</div><div class="line">        &quot;site&quot; : &quot;zxmantou.github.io&quot;</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<h5 id="更多实例"><a href="#更多实例" class="headerlink" title="更多实例"></a>更多实例</h5><ul>
+<li><p>只更新第一条记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 1 &#125; &#125; , &#123; $set : &#123; &quot;test2&quot; : &quot;OK&quot;&#125; &#125; );</div></pre></td></tr></table></figure>
+</li>
+<li><p>全部更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 3 &#125; &#125; , &#123; $set : &#123; &quot;test2&quot; : &quot;OK&quot;&#125; &#125;,false,true );</div></pre></td></tr></table></figure>
+</li>
+<li><p>只添加第一条：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 4 &#125; &#125; , &#123; $set : &#123; &quot;test5&quot; : &quot;OK&quot;&#125; &#125;,true,false );</div></pre></td></tr></table></figure>
+</li>
+<li><p>全部添加加进去:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 5 &#125; &#125; , &#123; $set : &#123; &quot;test5&quot; : &quot;OK&quot;&#125; &#125;,true,true );</div></pre></td></tr></table></figure>
+</li>
+<li><p>全部更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 15 &#125; &#125; , &#123; $inc : &#123; &quot;count&quot; : 1&#125; &#125;,false,true );</div></pre></td></tr></table></figure>
+</li>
+<li><p>只更新第一条记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update( &#123; &quot;count&quot; : &#123; $gt : 10 &#125; &#125; , &#123; $inc : &#123; &quot;count&quot; : 1&#125; &#125;,false,false );</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>删除文档(删除记录)<br> remove() 方法的基本语法格式如下所示：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.collection.remove(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &#123;</div><div class="line">     justOne: &lt;boolean&gt;,</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<pre><code>    参数说明：
+query :（可选）删除的文档的条件。
+justOne : （可选）如果设为 true 或 1，则只删除一个文档。
+writeConcern :（可选）抛出异常的级别。
+</code></pre></blockquote>
+<pre><code>实例:
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.find().pretty()</div><div class="line">&#123;</div><div class="line">        &quot;_id&quot; : ObjectId(&quot;58e4d75bbe3140034aeb2ba1&quot;),</div><div class="line">        &quot;name&quot; : &quot;zhangyuxiaojiao&quot;,</div><div class="line">        &quot;gender&quot; : &quot;male&quot;,</div><div class="line">        &quot;age&quot; : &quot;27&quot;,</div><div class="line">        &quot;site&quot; : &quot;zxmantou.github.io&quot;</div><div class="line">&#125;</div><div class="line">&gt; db.user.remove(&#123;&apos;name&apos;:&apos;zhangyuxiaojiao&apos;&#125;)</div><div class="line">WriteResult(&#123; &quot;nRemoved&quot; : 1 &#125;)</div><div class="line">&gt; db.user.find().pretty()</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>如果你想删除所有数据，可以使用以下方式（类似常规 SQL 的 truncate 命令）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.remove(&#123;&#125;)</div></pre></td></tr></table></figure>
+<ol>
+<li>查询文档(查询记录)<br> 之前实例已经演示了通过find()方法来查询所有记录的方法, 下一篇内容中将详细介绍复杂的查询方法</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/07/MongoDB2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-MongoDB1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/MongoDB1/">MongoDB安装与启动</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/MongoDB1/" class="archive-article-date">
+  	<time datetime="2017-04-07T00:41:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MongoDB安装与启动"><a href="#MongoDB安装与启动" class="headerlink" title="MongoDB安装与启动"></a>MongoDB安装与启动</h1><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><p>1.1 windows版</p>
+<p> 点击<a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="external">https://www.mongodb.com/download-center?jmp=nav#community</a><br>到mongodb官网上下载msi文件. 双击运行即可, 没有什么需要交代的.</p>
+<p>1.2 Linux版</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.3.tgz    # 下载</div><div class="line">tar -zxvf mongodb-linux-x86_64-3.4.3.tgz                                   # 解压</div><div class="line">mv  mongodb-linux-x86_64-3.4.3/ /usr/local/mongodb</div></pre></td></tr></table></figure>
+<p>MongoDB 的可执行文件位于 bin 目录下，所以可以将其添加到 PATH 路径中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=/usr/local/mongodb/bin:$PATH</div></pre></td></tr></table></figure>
+<p>1.3 Mac版<br>mac版有两种方式, 一种是跟linux一样, 下载地址<a href="https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-3.4.3.tgz" target="_blank" rel="external">在此</a>.<br>另一种是通过brew安装:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo brew install mongodb</div></pre></td></tr></table></figure>
+<p>如果要安装支持 TLS/SSL 命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo brew install mongodb --with-openssl</div></pre></td></tr></table></figure>
+<p>安装最新开发版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo brew install mongodb --devel</div></pre></td></tr></table></figure>
+<h3 id="2-启动MongoDB服务-以windows为例"><a href="#2-启动MongoDB服务-以windows为例" class="headerlink" title="2. 启动MongoDB服务(以windows为例)"></a>2. 启动MongoDB服务(以windows为例)</h3><p>安装完后文件目录如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">D:\Program Files\MongoDB\Server&gt;tree /a /f</div><div class="line">文件夹 PATH 列表</div><div class="line">卷序列号为 000D-76A0</div><div class="line">D:.</div><div class="line">\---3.4</div><div class="line">    |   GNU-AGPL-3.0</div><div class="line">    |   MPL-2</div><div class="line">    |   README</div><div class="line">    |   THIRD-PARTY-NOTICES</div><div class="line">    |</div><div class="line">    \---bin</div><div class="line">            bsondump.exe</div><div class="line">            libeay32.dll</div><div class="line">            mongo.exe</div><div class="line">            mongod.exe</div><div class="line">            mongod.pdb</div><div class="line">            mongodump.exe</div><div class="line">            mongoexport.exe</div><div class="line">            mongofiles.exe</div><div class="line">            mongoimport.exe</div><div class="line">            mongooplog.exe</div><div class="line">            mongoperf.exe</div><div class="line">            mongorestore.exe</div><div class="line">            mongos.exe</div><div class="line">            mongos.pdb</div><div class="line">            mongostat.exe</div><div class="line">            mongotop.exe</div><div class="line">            ssleay32.dll</div></pre></td></tr></table></figure>
+<p>首先创建一个用于存放MongoDB数据的文件夹, 我创建了一个文件夹 F:\mongodb, 然后定位到mongodb的bin文件夹, 执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath=f:\mongodb</div></pre></td></tr></table></figure>
+<p>其中dbpath则是用于指定存放数据的路径, 这样mongodb服务便启动了.<br><img src="http://note.youdao.com/yws/public/resource/3cb6886513862f40fa96dcce8ce5700f/xmlnote/030D1C6238374A368C78CB670968F5CA/276" alt="image"></p>
+<p>此时新开一个cmd, 输入mongo打开shell, 其实这个shell就是mongodb的客户端，同时也是一个js的编译器，默认连接的是“test”数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">D:\Program Files\MongoDB\Server\3.4\bin&gt;mongo</div><div class="line">MongoDB shell version v3.4.3</div><div class="line">connecting to: mongodb://127.0.0.1:27017</div><div class="line">MongoDB server version: 3.4.3</div><div class="line">&gt; db</div><div class="line">test</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<h3 id="3-访问控制"><a href="#3-访问控制" class="headerlink" title="3. 访问控制"></a>3. 访问控制</h3><p>注意开启MongoDB服务时有一个waring:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2017-04-05T18:45:08.793+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.</div><div class="line">2017-04-05T18:45:08.793+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.</div></pre></td></tr></table></figure>
+<p>这是由于服务启动的时候没有开启访问控制(认证、授权)，如果是在学习阶段可以忽略这个警告，生产环境则需要开启访问控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --auth --dbpath=f:\mongodb</div></pre></td></tr></table></figure></p>
+<p>添加用户(需要在没开启访问控制的时候操作):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">use admin</div><div class="line">db.createUser(</div><div class="line">...   &#123;</div><div class="line">...     user: &quot;test&quot;,</div><div class="line">...     pwd: &quot;test&quot;,</div><div class="line">...     roles: [ &#123; role: &quot;__system&quot;, db: &quot;admin&quot; &#125; ]</div><div class="line">...   &#125;</div><div class="line">... )</div></pre></td></tr></table></figure>
+<p>这时使用–auth开启服务, 执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.auth(&quot;test&quot;,&quot;test&quot;)</div></pre></td></tr></table></figure>
+<p>即可继续操作数据库了</p>
+<h3 id="4-MongoDb-web-用户界面"><a href="#4-MongoDb-web-用户界面" class="headerlink" title="4. MongoDb web 用户界面"></a>4. MongoDb web 用户界面</h3><p>MongoDB 提供了简单的 HTTP 用户界面。 如果你想启用该功能，需要在启动的时候指定参数 –rest 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath=f:\mongodb --rest</div></pre></td></tr></table></figure></p>
+<p>MongoDB 的 Web 界面访问端口比服务的端口多1000。<br>如果你的MongoDB运行端口使用默认的27017，你可以在端口号为28017访问web用户界面，即地址为：<a href="http://localhost:28017。" target="_blank" rel="external">http://localhost:28017。</a><br><img src="http://note.youdao.com/yws/public/resource/3cb6886513862f40fa96dcce8ce5700f/xmlnote/4D95738B04E54FB8B646D134943FA694/328" alt="image"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/07/MongoDB1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-SpringMVC-Shiro-UnauthorizedException" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -397,6 +789,10 @@ var _hmt = _hmt || [];
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">BigDecimal</a>
