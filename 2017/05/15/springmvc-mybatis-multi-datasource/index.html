@@ -8,14 +8,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zxmantou.github.io">
-  <title>Archives: 2016/5 | zxmantou&#39;s blog</title>
+  <title>Springmvc+mybatis 多数据源的两种用法 | zxmantou&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zxmantou's blog">
-<meta property="og:url" content="https://zxmantou.github.io/archives/2016/05/index.html">
+  <meta name="description" content="1. 使用AOP动态切换2. 设置多个sqlSessionFactory">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springmvc+mybatis 多数据源的两种用法">
+<meta property="og:url" content="https://zxmantou.github.io/2017/05/15/springmvc-mybatis-multi-datasource/index.html">
 <meta property="og:site_name" content="zxmantou's blog">
+<meta property="og:description" content="1. 使用AOP动态切换2. 设置多个sqlSessionFactory">
+<meta property="og:updated_time" content="2017-05-15T14:58:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zxmantou's blog">
+<meta name="twitter:title" content="Springmvc+mybatis 多数据源的两种用法">
+<meta name="twitter:description" content="1. 使用AOP动态切换2. 设置多个sqlSessionFactory">
   
     <link rel="alternative" href="/atom.xml" title="zxmantou&#39;s blog" type="application/atom+xml">
   
@@ -155,59 +159,212 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-springmvc-mybatis-multi-datasource" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/17/BigDecimal-multiply/" class="archive-article-date">
-  	<time datetime="2016-05-17T08:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/17/BigDecimal-multiply/">BigDecimal 乘法问题</a>
+    <h1 class="article-title" itemprop="name">
+      Springmvc+mybatis 多数据源的两种用法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/15/springmvc-mybatis-multi-datasource/" class="archive-article-date">
+  	<time datetime="2017-05-15T14:48:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-使用AOP动态切换"><a href="#1-使用AOP动态切换" class="headerlink" title="1. 使用AOP动态切换"></a>1. 使用AOP动态切换</h3><h3 id="2-设置多个sqlSessionFactory"><a href="#2-设置多个sqlSessionFactory" class="headerlink" title="2. 设置多个sqlSessionFactory"></a>2. 设置多个sqlSessionFactory</h3><a id="more"></a>
+<h1 id="1-使用AOP动态切换-1"><a href="#1-使用AOP动态切换-1" class="headerlink" title="1. 使用AOP动态切换"></a>1. 使用AOP动态切换</h1><p>这种情况常见于主从库读写分离的时候, 通常一个mapper会用到至少两个库, 在select和insert、update的时候分别使用不同的库, 此时建议使用AOP.</p>
+<h3 id="spring-mybatis-xml"><a href="#spring-mybatis-xml" class="headerlink" title="spring-mybatis.xml:"></a>spring-mybatis.xml:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=&quot;readDataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;</div><div class="line">      destroy-method=&quot;close&quot;&gt;</div><div class="line">    &lt;property name=&quot;driverClassName&quot; value=&quot;$&#123;jdbc.driverClassName&#125;&quot; /&gt;</div><div class="line">    &lt;property name=&quot;url&quot; value=&quot;$&#123;jdbc.url&#125;&quot; /&gt;</div><div class="line">    &lt;property name=&quot;username&quot; value=&quot;$&#123;jdbc.username&#125;&quot; /&gt;</div><div class="line">    &lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot; /&gt;</div><div class="line">    &lt;!-- 初始化连接大小 --&gt;</div><div class="line">    &lt;property name=&quot;initialSize&quot; value=&quot;$&#123;jdbc.initialSize&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最大数量 --&gt;</div><div class="line">    &lt;property name=&quot;maxActive&quot; value=&quot;$&#123;jdbc.maxActive&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最大空闲 --&gt;</div><div class="line">    &lt;property name=&quot;maxIdle&quot; value=&quot;$&#123;jdbc.maxIdle&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最小空闲 --&gt;</div><div class="line">    &lt;property name=&quot;minIdle&quot; value=&quot;$&#123;jdbc.minIdle&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 获取连接最大等待时间 --&gt;</div><div class="line">    &lt;property name=&quot;maxWait&quot; value=&quot;$&#123;jdbc.maxWait&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;300000&quot;/&gt;</div><div class="line">    &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;600000&quot;/&gt;</div><div class="line">    &lt;property name=&quot;numTestsPerEvictionRun&quot; value=&quot;$&#123;jdbc.maxActive&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;/&gt;</div><div class="line"> &lt;/bean&gt;</div><div class="line">&lt;bean id=&quot;writeDataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot; destroy-method=&quot;close&quot;&gt;</div><div class="line">    &lt;property name=&quot;driverClassName&quot; value=&quot;$&#123;jdbc.driverClassName&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;url&quot; value=&quot;$&#123;analyze.jdbc.url&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;username&quot; value=&quot;$&#123;analyze.jdbc.username&#125;&quot; /&gt;</div><div class="line">    &lt;property name=&quot;password&quot; value=&quot;$&#123;analyze.jdbc.password&#125;&quot; /&gt;</div><div class="line">    &lt;!-- 初始化连接大小 --&gt;</div><div class="line">    &lt;property name=&quot;initialSize&quot; value=&quot;$&#123;jdbc.initialSize&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最大数量 --&gt;</div><div class="line">    &lt;property name=&quot;maxActive&quot; value=&quot;$&#123;jdbc.maxActive&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最大空闲 --&gt;</div><div class="line">    &lt;property name=&quot;maxIdle&quot; value=&quot;$&#123;jdbc.maxIdle&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最小空闲 --&gt;</div><div class="line">    &lt;property name=&quot;minIdle&quot; value=&quot;$&#123;jdbc.minIdle&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 获取连接最大等待时间 --&gt;</div><div class="line">    &lt;property name=&quot;maxWait&quot; value=&quot;$&#123;jdbc.maxWait&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;300000&quot;/&gt;</div><div class="line">    &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;600000&quot;/&gt;</div><div class="line">    &lt;property name=&quot;numTestsPerEvictionRun&quot; value=&quot;$&#123;jdbc.maxActive&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;/&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;bean id=&quot;dataSource&quot; class=&quot;com.abc.dao.DBContextHolder&quot;&gt;&lt;!-- 这里写选择数据源的类地址 下面跟着给出--&gt;</div><div class="line">    &lt;property name=&quot;defaultTargetDataSource&quot; ref=&quot;readDataSource&quot;/&gt;&lt;!-- 设置默认为此readDataSource数据源--&gt;</div><div class="line">    &lt;property name=&quot;targetDataSources&quot;&gt;</div><div class="line">        &lt;map&gt;</div><div class="line">            &lt;entry key=&quot;readDataSource&quot; value-ref=&quot;readDataSource&quot;/&gt;</div><div class="line">            &lt;entry key=&quot;writeDataSource&quot; value-ref=&quot;writeDataSource&quot;/&gt;</div><div class="line">        &lt;/map&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line"></div><div class="line">&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</div><div class="line">    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</div><div class="line">    &lt;!-- 自动扫描mapping.xml文件 --&gt;</div><div class="line">    &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath*:mapping/**/*.xml&quot;/&gt;</div><div class="line">    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:config/mybatis-config.xml&quot; /&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line"></div><div class="line">&lt;!--配置aop--&gt;</div><div class="line">&lt;bean id=&quot;dataSourceAspect&quot; class=&quot;com.abc.dao.DataSourceAspect&quot; /&gt;</div><div class="line">&lt;aop:config&gt;</div><div class="line">    &lt;aop:advisor pointcut=&quot;execution(* com.abc.dao..*.*(..))&quot; advice-ref=&quot;dataSourceAspect&quot; /&gt;</div><div class="line">&lt;/aop:config&gt;</div></pre></td></tr></table></figure>
+<h3 id="DBContextHolder"><a href="#DBContextHolder" class="headerlink" title="DBContextHolder"></a>DBContextHolder</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class DBContextHolder extends AbstractRoutingDataSource &#123;</div><div class="line"></div><div class="line">    public static final ThreadLocal&lt;String&gt; contextHolder = new ThreadLocal&lt;String&gt;();</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 设置当前数据源</div><div class="line">     * @param dbType</div><div class="line">     */</div><div class="line">    public static void setDbType(String dbType)&#123;</div><div class="line">        if(!dbType.equals(getDbType()))&#123;</div><div class="line">            contextHolder.set(dbType);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    /**</div><div class="line">     * 获得当前数据源</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    public static String getDbType()&#123;</div><div class="line">        String dbType = (String)contextHolder.get();</div><div class="line">        return dbType;</div><div class="line">    &#125;</div><div class="line">    /**</div><div class="line">     *清除上下文</div><div class="line">     *</div><div class="line">     */</div><div class="line">    public static void clearContext()&#123;</div><div class="line">        contextHolder.remove();</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    protected Object determineCurrentLookupKey() &#123;</div><div class="line">        return DBContextHolder.getDbType();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="DataSourceAspect"><a href="#DataSourceAspect" class="headerlink" title="DataSourceAspect:"></a>DataSourceAspect:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">public class DataSourceAspect implements MethodBeforeAdvice, AfterReturningAdvice, ThrowsAdvice &#123;</div><div class="line">    private static final Logger log = LogManager.getLogger(DataSourceAspect.class);</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void before(Method method, Object[] args, Object target) throws Throwable &#123;</div><div class="line">        try &#123;</div><div class="line">            if(method != null) &#123;</div><div class="line">                //这里用于区分读和写的方法, 需按情况修改</div><div class="line">                if(method.getName().startsWith(&quot;select&quot;)) &#123;</div><div class="line">                    DBContextHolder.setDbType(&quot;readDataSource&quot;);</div><div class="line">                &#125; else &#123;</div><div class="line">                    DBContextHolder.setDbType(&quot;writeDataSource&quot;);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; catch (Exception var5) &#123;</div><div class="line">            log.error(&quot;data source aspect error.&quot;, var5);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void after(JoinPoint point) &#123;</div><div class="line">        log.info(&quot;clear db type after method.current id &#123;&quot; + Arrays.toString(new Object[]&#123;Long.valueOf(Thread.currentThread().getId())&#125;) + &quot;&#125;&quot;);</div><div class="line">        DBContextHolder.clearContext();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void afterThrowing(Method method, Object[] args, Object target, Exception ex) throws Throwable &#123;</div><div class="line">        log.info(&quot;current db type &#123;&quot; + Arrays.toString(new Object[]&#123;DBContextHolder.getDbType()&#125;) + &quot;&#125; when exception&quot;);</div><div class="line">        DBContextHolder.setDbType(&quot;metaDataSource&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="2-设置多个sqlSessionFactory-1"><a href="#2-设置多个sqlSessionFactory-1" class="headerlink" title="2. 设置多个sqlSessionFactory"></a>2. 设置多个sqlSessionFactory</h1><p>这种情况多见于一个系统集成了多种类型的功能, 需要多个数据连接, 这些数据连接甚至连数据库类型都不同, 但是一个mapper肯定只会有其中的一个. 这种方法属于静态配置, 只需要指定什么mapper用什么数据连接即可</p>
+<h3 id="spring-mybatis-xml-1"><a href="#spring-mybatis-xml-1" class="headerlink" title="spring-mybatis.xml:"></a>spring-mybatis.xml:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=&quot;analyzeDataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;</div><div class="line">      destroy-method=&quot;close&quot;&gt;</div><div class="line">    &lt;property name=&quot;driverClassName&quot; value=&quot;$&#123;jdbc.driverClassName&#125;&quot; /&gt;</div><div class="line">    &lt;property name=&quot;url&quot; value=&quot;$&#123;jdbc.url&#125;&quot; /&gt;</div><div class="line">    &lt;property name=&quot;username&quot; value=&quot;$&#123;jdbc.username&#125;&quot; /&gt;</div><div class="line">    &lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot; /&gt;</div><div class="line">    &lt;!-- 初始化连接大小 --&gt;</div><div class="line">    &lt;property name=&quot;initialSize&quot; value=&quot;$&#123;jdbc.initialSize&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最大数量 --&gt;</div><div class="line">    &lt;property name=&quot;maxActive&quot; value=&quot;$&#123;jdbc.maxActive&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最大空闲 --&gt;</div><div class="line">    &lt;property name=&quot;maxIdle&quot; value=&quot;$&#123;jdbc.maxIdle&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最小空闲 --&gt;</div><div class="line">    &lt;property name=&quot;minIdle&quot; value=&quot;$&#123;jdbc.minIdle&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 获取连接最大等待时间 --&gt;</div><div class="line">    &lt;property name=&quot;maxWait&quot; value=&quot;$&#123;jdbc.maxWait&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;300000&quot;/&gt;</div><div class="line">    &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;600000&quot;/&gt;</div><div class="line">    &lt;property name=&quot;numTestsPerEvictionRun&quot; value=&quot;$&#123;jdbc.maxActive&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;/&gt;</div><div class="line"> &lt;/bean&gt;</div><div class="line">&lt;bean id=&quot;managementDataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot; destroy-method=&quot;close&quot;&gt;</div><div class="line">    &lt;property name=&quot;driverClassName&quot; value=&quot;$&#123;jdbc.driverClassName&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;url&quot; value=&quot;$&#123;analyze.jdbc.url&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;username&quot; value=&quot;$&#123;analyze.jdbc.username&#125;&quot; /&gt;</div><div class="line">    &lt;property name=&quot;password&quot; value=&quot;$&#123;analyze.jdbc.password&#125;&quot; /&gt;</div><div class="line">    &lt;!-- 初始化连接大小 --&gt;</div><div class="line">    &lt;property name=&quot;initialSize&quot; value=&quot;$&#123;jdbc.initialSize&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最大数量 --&gt;</div><div class="line">    &lt;property name=&quot;maxActive&quot; value=&quot;$&#123;jdbc.maxActive&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最大空闲 --&gt;</div><div class="line">    &lt;property name=&quot;maxIdle&quot; value=&quot;$&#123;jdbc.maxIdle&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 连接池最小空闲 --&gt;</div><div class="line">    &lt;property name=&quot;minIdle&quot; value=&quot;$&#123;jdbc.minIdle&#125;&quot;/&gt;</div><div class="line">    &lt;!-- 获取连接最大等待时间 --&gt;</div><div class="line">    &lt;property name=&quot;maxWait&quot; value=&quot;$&#123;jdbc.maxWait&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot;/&gt;</div><div class="line">    &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;300000&quot;/&gt;</div><div class="line">    &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;600000&quot;/&gt;</div><div class="line">    &lt;property name=&quot;numTestsPerEvictionRun&quot; value=&quot;$&#123;jdbc.maxActive&#125;&quot;/&gt;</div><div class="line">    &lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;/&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line"></div><div class="line">&lt;bean id=&quot;sqlSessionFactoryAnalyze&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</div><div class="line">    &lt;property name=&quot;dataSource&quot; ref=&quot;analyzeDataSource&quot; /&gt;</div><div class="line">    &lt;!-- 自动扫描mapping.xml文件 --&gt;</div><div class="line">    &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath*:mapping/analyze/**/*.xml&quot;/&gt;</div><div class="line">    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:config/mybatis-config.xml&quot; /&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;bean id=&quot;sqlSessionFactoryManagement&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</div><div class="line">    &lt;property name=&quot;dataSource&quot; ref=&quot;managementDataSource&quot; /&gt;</div><div class="line">    &lt;!-- 自动扫描mapping.xml文件 --&gt;</div><div class="line">    &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath*:mapping/management/**/*.xml&quot;/&gt;</div><div class="line">    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:config/mybatis-config.xml&quot; /&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line"></div><div class="line">&lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;</div><div class="line">    &lt;property name=&quot;basePackage&quot; value=&quot;com.abc.dao.analyze&quot; /&gt;</div><div class="line">    &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactoryAnalyze&quot;/&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;</div><div class="line">    &lt;property name=&quot;basePackage&quot; value=&quot;com.abc.dao.management&quot; /&gt;</div><div class="line">    &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactoryManagement&quot;/&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意, 上面配置了两次MapperScannerConfigurer, 前者会优先匹配, 后者不会覆盖前者</p>
+</blockquote>
+<p>这种方式配置文件完成, 多数据源配置也就完成了</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">BigDecimal</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">多数据源</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zxmantou.github.io/2017/05/15/springmvc-mybatis-multi-datasource/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/15/angularjs-http-loading/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用$http发送请求的时候显示loading
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/04/07/MongoDB3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB备份与恢复</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="springmvc-mybatis-multi-datasource" data-title="Springmvc+mybatis 多数据源的两种用法" data-url="https://zxmantou.github.io/2017/05/15/springmvc-mybatis-multi-datasource/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2129683"></script>
+</section>
     
 
 
@@ -231,8 +388,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

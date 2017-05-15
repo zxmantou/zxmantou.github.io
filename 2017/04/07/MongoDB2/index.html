@@ -10,16 +10,16 @@
   <link rel="dns-prefetch" href="https://zxmantou.github.io">
   <title>MongoDB增删改——我们所熟悉的操作 | zxmantou&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MongoDB增删改——我们所熟悉的操作前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作">
+  <meta name="description" content="前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB增删改——我们所熟悉的操作">
 <meta property="og:url" content="https://zxmantou.github.io/2017/04/07/MongoDB2/index.html">
 <meta property="og:site_name" content="zxmantou's blog">
-<meta property="og:description" content="MongoDB增删改——我们所熟悉的操作前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作">
-<meta property="og:updated_time" content="2017-04-07T00:50:24.000Z">
+<meta property="og:description" content="前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作">
+<meta property="og:updated_time" content="2017-05-15T14:58:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB增删改——我们所熟悉的操作">
-<meta name="twitter:description" content="MongoDB增删改——我们所熟悉的操作前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作">
+<meta name="twitter:description" content="前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作">
   
     <link rel="alternative" href="/atom.xml" title="zxmantou&#39;s blog" type="application/atom+xml">
   
@@ -179,27 +179,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MongoDB增删改——我们所熟悉的操作"><a href="#MongoDB增删改——我们所熟悉的操作" class="headerlink" title="MongoDB增删改——我们所熟悉的操作"></a>MongoDB增删改——我们所熟悉的操作</h1><p>前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作</p>
+        <p>前面介绍了如何启动MongoDB以及用shell连接, 下面介绍一些我们在mysql中所熟悉的一些操作</p>
 <a id="more"></a>
 <ol>
 <li><p>创建数据库</p>
 <p> MongoDB 创建数据库的语法格式如下：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use DATABASE_NAME</div></pre></td></tr></table></figure>
+<p> 如果数据库不存在，则创建数据库，否则切换到指定数据库。<br> 演示</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; use zxmantou</div><div class="line">switched to db zxmantou</div><div class="line">&gt; db</div><div class="line">zxmantou</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p> 可见我们当前的db已经是zxmantou了, 使用<strong>show dbs</strong>命令查看数据库列表</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">admin  0.000GB</div><div class="line">local  0.000GB</div><div class="line">test   0.000GB</div></pre></td></tr></table></figure>
+<p> 发现新增的数据库并不在其中. 要显示它，我们需要向 zxmantou 数据库插入一些数据。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.insert(&#123;name:&quot;zxmantou&quot;&#125;)</div><div class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</div><div class="line">&gt; show dbs</div><div class="line">admin     0.000GB</div><div class="line">local     0.000GB</div><div class="line">test      0.000GB</div><div class="line">zxmantou  0.000GB</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<pre><code>如果数据库不存在，则创建数据库，否则切换到指定数据库。
-演示
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; use zxmantou</div><div class="line">switched to db zxmantou</div><div class="line">&gt; db</div><div class="line">zxmantou</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-
-可见我们当前的db已经是zxmantou了, 使用**show dbs**命令查看数据库列表
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">admin  0.000GB</div><div class="line">local  0.000GB</div><div class="line">test   0.000GB</div></pre></td></tr></table></figure>
-
-发现新增的数据库并不在其中. 要显示它，我们需要向 zxmantou 数据库插入一些数据。
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; db.user.insert(&#123;name:&quot;zxmantou&quot;&#125;)</div><div class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</div><div class="line">&gt; show dbs</div><div class="line">admin     0.000GB</div><div class="line">local     0.000GB</div><div class="line">test      0.000GB</div><div class="line">zxmantou  0.000GB</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</code></pre><ol>
 <li><p>删除数据库</p>
 <p> 删除当前数据库，默认为 test, 下面实例中将删除我们新建的zxmantou库:</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line">admin     0.000GB</div><div class="line">local     0.000GB</div><div class="line">test      0.000GB</div><div class="line">zxmantou  0.000GB</div><div class="line">&gt; db</div><div class="line">zxmantou</div><div class="line">&gt; db.dropDatabase()</div><div class="line">&#123; &quot;dropped&quot; : &quot;zxmantou&quot;, &quot;ok&quot; : 1 &#125;</div><div class="line">&gt; show dbs</div><div class="line">admin  0.000GB</div><div class="line">local  0.000GB</div><div class="line">test   0.000GB</div></pre></td></tr></table></figure>
@@ -559,6 +551,38 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shiro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">angularjs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">loading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pyenv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">virtualenv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">多数据源</a>
               </li>
             
             <div class="clearfix"></div>

@@ -8,14 +8,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zxmantou.github.io">
-  <title>Archives: 2016/5 | zxmantou&#39;s blog</title>
+  <title>使用$http发送请求的时候显示loading | zxmantou&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zxmantou's blog">
-<meta property="og:url" content="https://zxmantou.github.io/archives/2016/05/index.html">
+  <meta name="description" content="通过拦截$http请求统一添加loading图片">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用$http发送请求的时候显示loading">
+<meta property="og:url" content="https://zxmantou.github.io/2017/05/15/angularjs-http-loading/index.html">
 <meta property="og:site_name" content="zxmantou's blog">
+<meta property="og:description" content="通过拦截$http请求统一添加loading图片">
+<meta property="og:updated_time" content="2017-05-15T15:03:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zxmantou's blog">
+<meta name="twitter:title" content="使用$http发送请求的时候显示loading">
+<meta name="twitter:description" content="通过拦截$http请求统一添加loading图片">
   
     <link rel="alternative" href="/atom.xml" title="zxmantou&#39;s blog" type="application/atom+xml">
   
@@ -155,59 +159,209 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-angularjs-http-loading" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/17/BigDecimal-multiply/" class="archive-article-date">
-  	<time datetime="2016-05-17T08:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/17/BigDecimal-multiply/">BigDecimal 乘法问题</a>
+    <h1 class="article-title" itemprop="name">
+      使用$http发送请求的时候显示loading
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/15/angularjs-http-loading/" class="archive-article-date">
+  	<time datetime="2017-05-15T15:01:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="通过拦截-http请求统一添加loading图片"><a href="#通过拦截-http请求统一添加loading图片" class="headerlink" title="通过拦截$http请求统一添加loading图片"></a>通过拦截$http请求统一添加loading图片</h3><a id="more"></a>
+<p>由于是单页应用, 所以在index.html中必有这样一行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div ui-view=&quot;&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>在这一行下面添加以下代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"loading"</span> <span class="attr">ng-show</span>=<span class="string">"showLoading"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"spinner"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"images/loading.gif"</span> <span class="attr">style</span>=<span class="string">"z-index: 999"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>CSS:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#loading &#123;</div><div class="line">  position: fixed; /* Sit on top of the page content */</div><div class="line">  display: block; /* Hidden by default */</div><div class="line">  width: 100%; /* Full width (cover the whole page) */</div><div class="line">  height: 100%; /* Full height (cover the whole page) */</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  right: 0;</div><div class="line">  bottom: 0;</div><div class="line">  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */</div><div class="line">  z-index: 2000; /* Specify a stack order in case you&apos;re using a different order for other elements */</div><div class="line">  cursor: pointer; /* Add a pointer on hover */</div><div class="line">&#125;</div><div class="line"></div><div class="line">.spinner &#123;</div><div class="line">  margin: 0 auto;</div><div class="line">  position: relative;</div><div class="line">  top: 35%;</div><div class="line">  width: 1px;</div><div class="line">  z-index: 2147483647;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不要忘了给body添加属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;body ng-class=&quot;&#123;true: &apos;modal-open&apos;, false: &apos;&apos;&#125;[showLoading]&quot;&gt;</div></pre></td></tr></table></figure>
+<p>若不启动蒙版, 显示loading 的时候依然能够在页面上操作, 因为用了bootstrap, 所以添加modal-open就能够开启蒙版了.</p>
+<p>JS:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">angular.module(&apos;listener&apos;, [])</div><div class="line">    .run([&quot;$rootScope&quot;, &apos;$injector&apos;,</div><div class="line">        function ($rootScope, $injector) &#123;</div><div class="line">            $rootScope.showLoading = false;</div><div class="line">            $rootScope.$on(&apos;loading:show&apos;, function () &#123;</div><div class="line">                $rootScope.showLoading = true;</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">            $rootScope.$on(&apos;loading:hide&apos;, function () &#123;</div><div class="line">                $rootScope.showLoading = false;</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">            $rootScope.$on(&apos;request:404&apos;, function () &#123;</div><div class="line">                swal(&#123;</div><div class="line">                    title: &quot;请求出错!&quot;,</div><div class="line">                    type: &quot;error&quot;,</div><div class="line">                    timer: 1000,</div><div class="line">                    showConfirmButton: false,</div><div class="line">                    allowOutsideClick:true</div><div class="line">                &#125;);</div><div class="line">            &#125;);      </div><div class="line">        &#125;]</div><div class="line">    )</div><div class="line">;</div><div class="line"></div><div class="line">angular.module(&apos;interceptor&apos;, [])</div><div class="line">    .config([&apos;$httpProvider&apos;,</div><div class="line">        function ($httpProvider) &#123;</div><div class="line">            var requestInterceptor = [&apos;$q&apos;, &apos;$injector&apos;, &apos;$rootScope&apos;,</div><div class="line">                function ($q, $injector, $rootScope) &#123;</div><div class="line">                    return &#123;</div><div class="line">                        request: function (config) &#123;</div><div class="line">                            $rootScope.$broadcast(&apos;loading:show&apos;);</div><div class="line">                            return config || $q.when(config);</div><div class="line">                        &#125;,</div><div class="line">                        response: function (response) &#123;</div><div class="line">                            $rootScope.$broadcast(&apos;loading:hide&apos;);</div><div class="line">                            return response;</div><div class="line">                        &#125;,</div><div class="line">                        responseError: function (response) &#123;</div><div class="line">                            $rootScope.$broadcast(&apos;loading:hide&apos;);</div><div class="line">                            return $q.reject(response);</div><div class="line">                        &#125;,</div><div class="line">                        requestError: function (response) &#123;</div><div class="line">                            $rootScope.$broadcast(&apos;loading:hide&apos;);</div><div class="line">                            return response;</div><div class="line">                        &#125;</div><div class="line">                    &#125;;</div><div class="line">                &#125;];</div><div class="line">            $httpProvider.interceptors.push(requestInterceptor);</div><div class="line">        &#125;]);</div></pre></td></tr></table></figure>
+<p>另附生成loading图片的地址:<br><a href="https://loading.io[/](https://loading.io/" target="_blank" rel="external">https://loading.io[/](https://loading.io/</a>)</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">BigDecimal</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">angularjs</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">loading</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zxmantou.github.io/2017/05/15/angularjs-http-loading/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/15/pyenv-virtualenv/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          pyenv &amp;&amp; virtualenv
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/05/15/springmvc-mybatis-multi-datasource/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Springmvc+mybatis 多数据源的两种用法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="angularjs-http-loading" data-title="使用$http发送请求的时候显示loading" data-url="https://zxmantou.github.io/2017/05/15/angularjs-http-loading/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2129683"></script>
+</section>
     
 
 
@@ -231,8 +385,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

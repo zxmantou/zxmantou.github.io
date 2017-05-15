@@ -8,14 +8,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zxmantou.github.io">
-  <title>Archives: 2016/5 | zxmantou&#39;s blog</title>
+  <title>pyenv &amp;&amp; virtualenv | zxmantou&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zxmantou's blog">
-<meta property="og:url" content="https://zxmantou.github.io/archives/2016/05/index.html">
+  <meta name="description" content="安装1.1 自动安装1.2 手动安装
+常用命令
+pyenv 插件: pyenv-virtualenv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pyenv && virtualenv">
+<meta property="og:url" content="https://zxmantou.github.io/2017/05/15/pyenv-virtualenv/index.html">
 <meta property="og:site_name" content="zxmantou's blog">
+<meta property="og:description" content="安装1.1 自动安装1.2 手动安装
+常用命令
+pyenv 插件: pyenv-virtualenv">
+<meta property="og:updated_time" content="2017-05-15T15:05:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zxmantou's blog">
+<meta name="twitter:title" content="pyenv && virtualenv">
+<meta name="twitter:description" content="安装1.1 自动安装1.2 手动安装
+常用命令
+pyenv 插件: pyenv-virtualenv">
   
     <link rel="alternative" href="/atom.xml" title="zxmantou&#39;s blog" type="application/atom+xml">
   
@@ -155,59 +165,236 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-pyenv-virtualenv" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/17/BigDecimal-multiply/" class="archive-article-date">
-  	<time datetime="2016-05-17T08:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/17/BigDecimal-multiply/">BigDecimal 乘法问题</a>
+    <h1 class="article-title" itemprop="name">
+      pyenv &amp;&amp; virtualenv
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/15/pyenv-virtualenv/" class="archive-article-date">
+  	<time datetime="2017-05-15T15:04:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>安装<br>1.1 自动安装<br>1.2 手动安装</li>
+<li>常用命令</li>
+<li>pyenv 插件: pyenv-virtualenv</li>
+</ol>
+<a id="more"></a>
+<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><h5 id="1-1-自动安装："><a href="#1-1-自动安装：" class="headerlink" title="1.1 自动安装："></a>1.1 自动安装：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash</div></pre></td></tr></table></figure>
+<h5 id="1-2-手动安装"><a href="#1-2-手动安装" class="headerlink" title="1.2 手动安装"></a>1.2 手动安装</h5><pre><code>a. 将 pyenv 检出到你想安装的目录。建议路径为：$HOME/.pyenv
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd</div><div class="line">$ git clone git://github.com/yyuu/pyenv.git .pyenv</div></pre></td></tr></table></figure>
+<p>b. 添加环境变量。PYENV_ROOT指向 pyenv检出的根目录，并向$PATH添加$PYENV_ROOT/bin以提供访问pyenv这条命令的路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&apos; &gt;&gt; ~/.bash_profile</div><div class="line">$ echo &apos;export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&apos; &gt;&gt; ~/.bash_profile</div></pre></td></tr></table></figure>
+<p>c. 向 shell 添加pyenv init以启用 shims 和命令补完功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;eval &quot;$(pyenv init -)&quot;&apos; &gt;&gt; ~/.bash_profile</div></pre></td></tr></table></figure>
+<p>配置文件的位置同上一条一样需要修改</p>
+<p>d. 重启 shell（因为修改了$PATH）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ exec $SHELL</div></pre></td></tr></table></figure>
+<h3 id="2-常用命令："><a href="#2-常用命令：" class="headerlink" title="2. 常用命令："></a>2. 常用命令：</h3><pre><code>a. pyenv versions  查看已安装的python版本
+b. Pyenv install -l  列出所有pyenv收录的python版本
+c. pyenv install -v {version}  安装指定版本
+d. Pyenv uninstall {version}   卸载指定版本
+e. pyenv rehash - 创建垫片路径（为所有已安装的可执行文件 （如：~/.pyenv/versions//bin/） 创建 shims，因此，每当你增删了 Python 版本或带有可执行文件的包（如 pip）以后，都应该执行一次本命令）
+f. $ pyenv global 3.4.0 - 设置全局的 Python 版本，通过将版本号写入 ~/.pyenv/version 文件的方式。
+g. $ pyenv local 2.7.3 - 设置面向程序的本地版本，通过将版本号写入当前目录下的 .python-version 文件的方式。通过这种方式设置的 Python 版本优先级较 global 高。
+h. pyenv 会从当前目录开始向上逐级查找 .python-version 文件，直到根目录为止。若找不到，就用 global 版本。
+</code></pre><h3 id="3-pyenv-插件-pyenv-virtualenv"><a href="#3-pyenv-插件-pyenv-virtualenv" class="headerlink" title="3. pyenv 插件: pyenv-virtualenv"></a>3. pyenv 插件: pyenv-virtualenv</h3><p>a. 创建虚拟环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pyenv virtualenv 2.7.10 my-virtual-env-2.7.10</div></pre></td></tr></table></figure>
+<pre><code>若不指定python 版本，会汇报认使用当前环境python版本。
+</code></pre><p>b. 列出当前虚拟环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pyenv virtualenvs</div></pre></td></tr></table></figure>
+<p>c. 激活虚拟环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pyenv activate</div></pre></td></tr></table></figure>
+<p>d. 退出虚拟环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pyenv deactivate</div></pre></td></tr></table></figure>
+<p>e. 删除虚拟环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pyenv uninstall my-virtual-env</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">BigDecimal</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pyenv</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">virtualenv</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zxmantou.github.io/2017/05/15/pyenv-virtualenv/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/15/angular-mocks/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          angular-mocks
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/05/15/angularjs-http-loading/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用$http发送请求的时候显示loading</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="pyenv-virtualenv" data-title="pyenv &amp;&amp; virtualenv" data-url="https://zxmantou.github.io/2017/05/15/pyenv-virtualenv/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"[object Object]"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
+
+
+
+
+    
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2129683"></script>
+</section>
     
 
 
@@ -231,8 +418,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
